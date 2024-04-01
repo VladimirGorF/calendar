@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <div class="title">Caleendar</div>
+    <div class="title">{{title}}</div>
     <div class="box">
       <div class="container">
         <div class="top">
@@ -44,7 +44,7 @@
     </div>
     <div class="showDate">{{ date }}</div>
     <button class="language" @click="changeLanguage">Ln</button>
-    <p>Переключить язык</p>
+    <p>{{languageToggle}}</p>
   </div>
 </template>
 
@@ -59,6 +59,8 @@ export default {
   name: "MyCalendar",
   data() {
     return {
+      languageToggle: 'Change language',
+      title: 'Calendar',
       isChecked: Number,
       date: "",
       month: "",
@@ -157,10 +159,14 @@ export default {
         this.daysOfWeekList = weekListRu;
         this.monthList = monListRu;
         this.month = this.monthList[index];
+        this.title = 'Календарь'
+        this.languageToggle = 'Переключить язык'
       } else {
         this.daysOfWeekList = weekListEn;
         this.monthList = monListEn;
         this.month = this.monthList[index];
+        this.title = 'Calendar'
+        this.languageToggle = 'Change language'
       }
       // обновить дату в поставке на экран
       this.dayAbsentChecker();
