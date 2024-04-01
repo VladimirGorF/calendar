@@ -55,6 +55,7 @@ import {
   monListEn,
   monListRu,
 } from "../utils/utils.js";
+
 export default {
   name: "MyCalendar",
   data() {
@@ -113,9 +114,7 @@ export default {
       // если мы хотим уйти за декабрь, то скачем в январь и увеличиваем год
       if (index === this.monthList.length - 1) {
         this.month = this.monthList[0];
-        console.log("до", this.year);
         this.year += 1;
-        console.log("после", this.year);
       } else {
         this.month = this.monthList[index + 1];
       }
@@ -126,7 +125,7 @@ export default {
     changeDateFunc() {
       // по инпуту вносим изменения в календарь
       let newDate = this.date.split("-");
-      this.year = newDate[0];
+      this.year = Number(newDate[0]);
       this.month = this.monthList[Number(newDate[1] - 1)];
       this.isChecked = Number(newDate[2]);
     },
@@ -144,6 +143,8 @@ export default {
           day: "numeric",
         })
       );
+      console.log(this.year);
+      console.log(typeof(this.year));
     },
     // функция проверки отсутствия такого числа в месяце
     dayAbsentChecker() {
