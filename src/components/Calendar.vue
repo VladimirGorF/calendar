@@ -294,4 +294,7 @@ input {
   text-align: center;
   margin-bottom: 50px;
 }
+.language{
+  cursor: pointer;
+}
 </style>
